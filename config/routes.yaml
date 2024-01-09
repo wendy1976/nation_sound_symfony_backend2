@@ -7,3 +7,8 @@ controllers:
 home:
     path: /
     controller: App\Controller\HomeController::index
+
+api_concerts:
+    path: /api/concerts
+    controller: App\Controller\ConcertApiController::getConcerts
+    methods: GET
