@@ -14,20 +14,24 @@ class ConcertApiController extends AbstractController
     {
         $concerts = $concertRepository->findAll();
         $concertsArray = [];
+
         foreach ($concerts as $concert) {
             $concertsArray[] = [
                 'id' => $concert->getId(),
                 'nom_artiste' => $concert->getNomArtiste(),
                 'designation' => $concert->getDesignation(),
                 'description' => $concert->getDescription(),
-            // Ajoutez ici d'autres propriétés que vous souhaitez inclure
-                'date_concert' => $concert->getDateConcert(),
-                'scene' => $concert->getScene(),
-                'musique' => $concert->getMusique(),
-                'image' => $concert->getImage(),// Ajoutez ici d'autres propriétés que vous souhaitez inclure
+                'date_concert' => $concert->getDateConcert() ? $concert->getDateConcert()->getDateHeure() : null,
+                'scene' => $concert->getScene() ? $concert->getScene()->getNomScene() : null,
+                'musique' => $concert->getMusique() ? $concert->getMusique()->getStyleMusique() : null,
+                'image' => $concert->getImage(),
+                // Ajoutez ici d'autres propriétés que vous souhaitez inclure
             ];
         }
 
-        return new JsonResponse($concertsArray);
+        $response = new JsonResponse();
+        $response->setContent(json_encode($concertsArray, JSON_UNESCAPED_UNICODE));
+
+        return $response;
     }
 }
