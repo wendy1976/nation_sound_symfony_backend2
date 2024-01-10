@@ -58,6 +58,6 @@ class DateConcert
 
     public function __toString(): string
     {
-        return $this->date_heure->format('Y-m-d H:i:s');
+        return $this->date->format('d M Y \à H:i');
     }
 }
