@@ -4,4 +4,8 @@ vich_uploader:
         concert_images:
             uri_prefix: /images/concerts
             upload_destination: '%kernel.project_dir%/public/images/concerts'
-            namer: Vich\UploaderBundle\Naming\OrignameNamer 
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+        pass_images:
+            uri_prefix: /images/passes
+            upload_destination: '%kernel.project_dir%/public/images/passes'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer

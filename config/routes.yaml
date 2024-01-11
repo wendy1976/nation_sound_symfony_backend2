@@ -12,3 +12,8 @@ api_concerts:
     path: /api/concerts
     controller: App\Controller\ConcertApiController::getConcerts
     methods: GET
+
+api_passes:
+    path: /api/passes
+    controller: App\Controller\PassApiController::getPasses
+    methods: GET    

@@ -8,9 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\UX\Turbo\Attribute\Broadcast;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: PassRepository::class)]
 #[Broadcast]
+#[Vich\Uploadable]
 class Pass
 {
     #[ORM\Id]
@@ -27,6 +30,12 @@ class Pass
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $prix_pass = null;
 
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    private ?string $imagePath = null;
+
+    #[Vich\UploadableField(mapping: 'pass_images', fileNameProperty: 'imagePath')]
+    private ?File $imageFile = null;
+
     #[ORM\OneToMany(mappedBy: 'pass', targetEntity: ConcertPass::class)]
     private Collection $concertPasses;
 
@@ -37,8 +46,6 @@ class Pass
 
     public function __toString()
     {
-        // Retournez ici une propriété appropriée de l'objet Pass
-        // Par exemple, si votre objet Pass a une propriété 'nom_pass', vous pouvez faire :
         return $this->nom_pass;
     }
 
@@ -83,6 +90,34 @@ class Pass
         return $this;
     }
 
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(?string $imagePath): static
+    {
+        $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): static
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, ConcertPass>
      */
@@ -104,7 +139,6 @@ class Pass
     public function removeConcertPass(ConcertPass $concertPass): static
     {
         if ($this->concertPasses->removeElement($concertPass)) {
-            // set the owning side to null (unless already changed)
             if ($concertPass->getPass() === $this) {
                 $concertPass->setPass(null);
             }
