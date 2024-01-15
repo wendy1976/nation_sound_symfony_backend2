@@ -16,4 +16,9 @@ api_concerts:
 api_passes:
     path: /api/passes
     controller: App\Controller\PassApiController::getPasses
-    methods: GET    
+    methods: GET
+
+send_notification:
+    path: /api/send-notification
+    controller: App\Controller\NotificationController::sendNotification
+    methods: GET
