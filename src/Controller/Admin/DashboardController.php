@@ -9,6 +9,7 @@ use App\Entity\DateConcert;
 use App\Entity\Pass;
 use App\Entity\Concert;
 use App\Entity\ConcertPass;
+use App\Entity\Notification;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -55,5 +56,6 @@ class DashboardController extends AbstractDashboardController
     yield MenuItem::linkToCrud('Les Pass', 'fas fa-list', Pass::class);
     yield MenuItem::linkToCrud('Les Concerts', 'fas fa-list', Concert::class);
     yield MenuItem::linkToCrud('Les pass et les concerts', 'fas fa-list', ConcertPass::class);
+    yield MenuItem::linkToCrud('Les push notifications', 'fas fa-list', Notification::class);
 }
 }

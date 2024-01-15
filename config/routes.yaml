@@ -18,7 +18,7 @@ api_passes:
     controller: App\Controller\PassApiController::getPasses
     methods: GET
 
-send_notification:
-    path: /api/send-notification
-    controller: App\Controller\NotificationController::sendNotification
+get_notifications:
+    path: /api/notifications
+    controller: App\Controller\NotificationController::getNotifications
     methods: GET

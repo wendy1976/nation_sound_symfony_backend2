@@ -2,22 +2,30 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Service\PushNotificationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class NotificationController extends AbstractController
 {
-    #[Route('/api/send-notification', name: 'send_notification', methods: ['GET'])]
+    #[Route('/api/notifications', name: 'get_notifications', methods: ['GET'])]
+public function getNotifications(EntityManagerInterface $em): JsonResponse
+{
+    $notifications = $em->getRepository(Notification::class)->findAll();
 
-    public function sendNotification(PushNotificationService $pushNotificationService): JsonResponse
-    {
-        $notification = $pushNotificationService->createNotification();
-
-        $response = new JsonResponse();
-        $response->setContent(json_encode($notification, JSON_UNESCAPED_UNICODE));
-
-        return $response;
+    $notificationsArray = [];
+    foreach ($notifications as $notification) {
+        $notificationsArray[] = [
+            'id' => $notification->getId(),
+            'title' => $notification->getTitle(),
+            'body' => $notification->getBody(),
+        ];
     }
+
+    return $this->json($notificationsArray);
+}
 }
