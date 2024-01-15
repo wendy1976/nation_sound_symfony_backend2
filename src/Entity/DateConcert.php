@@ -69,4 +69,9 @@ class DateConcert
     {
         return $this->dateToFrench($this->date_heure, 'd F Y \à H:i');
     }
+
+    public function getDay(): string
+    {
+        return $this->dateToFrench($this->date_heure, 'd F Y');
+    }
 }

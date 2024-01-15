@@ -25,6 +25,7 @@ class ConcertApiController extends AbstractController
                 'scene' => $concert->getScene() ? $concert->getScene()->getNomScene() : null,
                 'musique' => $concert->getMusique() ? $concert->getMusique()->getStyleMusique() : null,
                 'image' => $concert->getImage(),
+                'day' => $concert->getDateConcert() ? $concert->getDateConcert()->getDay() : null, // Ajoutez cette ligne
                 // Ajoutez ici d'autres propriétés que vous souhaitez inclure
             ];
         }
