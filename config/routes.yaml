@@ -22,3 +22,8 @@ get_notifications:
     path: /api/notifications
     controller: App\Controller\NotificationController::getNotifications
     methods: GET
+
+get_notificationInfos:
+    path: /api/notificationInfos
+    controller: App\Controller\NotificationInfoController::getNotificationInfos
+    methods: GET
