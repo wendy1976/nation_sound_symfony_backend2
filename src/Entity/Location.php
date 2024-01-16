@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\LocationRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\UX\Turbo\Attribute\Broadcast;
 
@@ -19,19 +18,19 @@ class Location
     #[ORM\Column(length: 255)]
     private ?string $category = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column(type: 'json')]
     private array $coordinates = [];
 
-    #[ORM\Column(type: Types::OBJECT)]
-    private ?object $icon = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $iconPath = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $popupContent = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     public function getId(): ?int
@@ -63,14 +62,14 @@ class Location
         return $this;
     }
 
-    public function getIcon(): ?object
+    public function getIconPath(): ?string
     {
-        return $this->icon;
+        return $this->iconPath;
     }
 
-    public function setIcon(object $icon): static
+    public function setIconPath(?string $iconPath): static
     {
-        $this->icon = $icon;
+        $this->iconPath = $iconPath;
 
         return $this;
     }
@@ -92,7 +91,7 @@ class Location
         return $this->popupContent;
     }
 
-    public function setPopupContent(string $popupContent): static
+    public function setPopupContent(?string $popupContent): static
     {
         $this->popupContent = $popupContent;
 
@@ -104,7 +103,7 @@ class Location
         return $this->image;
     }
 
-    public function setImage(string $image): static
+    public function setImage(?string $image): static
     {
         $this->image = $image;
 
