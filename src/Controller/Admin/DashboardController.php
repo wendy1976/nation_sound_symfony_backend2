@@ -50,12 +50,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
 {
     yield MenuItem::linktoDashboard('Accueil', 'fa fa-home');
-    yield MenuItem::linkToCrud('Scenes', 'fas fa-list', Scene::class);
-    yield MenuItem::linkToCrud('Musiques', 'fas fa-list', Musique::class);
-    yield MenuItem::linkToCrud('Dates et horaires', 'fas fa-list', DateConcert::class);
-    yield MenuItem::linkToCrud('Les Pass', 'fas fa-list', Pass::class);
-    yield MenuItem::linkToCrud('Les Concerts', 'fas fa-list', Concert::class);
-    yield MenuItem::linkToCrud('Les pass et les concerts', 'fas fa-list', ConcertPass::class);
-    yield MenuItem::linkToCrud('Les push notifications', 'fas fa-list', Notification::class);
+    yield MenuItem::linkToCrud('Scenes', 'fas fa-theater-masks', Scene::class);
+    yield MenuItem::linkToCrud('Musiques', 'fas fa-music', Musique::class);
+    yield MenuItem::linkToCrud('Dates et horaires', 'fas fa-calendar-alt', DateConcert::class);
+    yield MenuItem::linkToCrud('Les Pass', 'fas fa-ticket-alt', Pass::class);
+    yield MenuItem::linkToCrud('Les Concerts', 'fas fa-microphone', Concert::class);
+    yield MenuItem::linkToCrud('Les pass et les concerts', 'fas fa-guitar', ConcertPass::class);
+    yield MenuItem::linkToCrud('Les notifications Alertes', 'fas fa-bell', Notification::class);
 }
 }
