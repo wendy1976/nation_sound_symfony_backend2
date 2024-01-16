@@ -22,6 +22,10 @@ class Notification
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $body = null;
 
+    // Nouvelle propriété pour le lien externe
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $externalLink = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,6 +51,20 @@ class Notification
     public function setBody(?string $body): static
     {
         $this->body = $body;
+
+        return $this;
+    }
+
+    // Getter pour le lien externe
+    public function getExternalLink(): ?string
+    {
+        return $this->externalLink;
+    }
+
+    // Setter pour le lien externe
+    public function setExternalLink(?string $externalLink): static
+    {
+        $this->externalLink = $externalLink;
 
         return $this;
     }

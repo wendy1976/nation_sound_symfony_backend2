@@ -23,6 +23,7 @@ public function getNotifications(EntityManagerInterface $em): JsonResponse
             'id' => $notification->getId(),
             'title' => $notification->getTitle(),
             'body' => $notification->getBody(),
+            'externalLink' => $notification->getExternalLink(),
         ];
     }
 
