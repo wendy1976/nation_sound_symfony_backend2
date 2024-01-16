@@ -11,6 +11,7 @@ use App\Entity\Concert;
 use App\Entity\ConcertPass;
 use App\Entity\Notification;
 use App\Entity\NotificationInfo;
+use App\Entity\Location;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -59,5 +60,6 @@ class DashboardController extends AbstractDashboardController
     yield MenuItem::linkToCrud('Les pass et les concerts', 'fas fa-guitar', ConcertPass::class);
     yield MenuItem::linkToCrud('Les notifications Alertes', 'fas fa-bell', Notification::class);
     yield MenuItem::linkToCrud('Les notifications Infos', 'fas fa-info', NotificationInfo::class);
+    yield MenuItem::linkToCrud('La carte interactive', 'fas fa-info', Location::class);
 }
 }
