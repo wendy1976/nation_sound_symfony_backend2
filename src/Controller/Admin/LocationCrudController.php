@@ -20,17 +20,17 @@ class LocationCrudController extends AbstractCrudController
     }
 
     public function configureFields(string $pageName): iterable
-    {
-        return [
-            IdField::new('id')->onlyOnIndex(),
-            TextField::new('category'),
-            ArrayField::new('coordinates'),
-            Field::new('iconFile', 'Icone')->setFormType(VichImageType::class)->setFormTypeOptions(['allow_delete' => false])->onlyOnForms(), // Utilisez Field avec VichImageType pour le téléchargement d'images
-            ImageField::new('iconPath')->setBasePath('/images/location')->onlyOnIndex(), // Utilisez ImageField pour afficher les images
-            TextField::new('name'),
-            TextEditorField::new('popupContent'),
-            Field::new('imageFile', 'Image')->setFormType(VichImageType::class)->setFormTypeOptions(['allow_delete' => false])->onlyOnForms(), // Utilisez Field avec VichImageType pour le téléchargement d'images
-            ImageField::new('image')->setBasePath('/images/location')->onlyOnIndex(), // Utilisez ImageField pour afficher les images
-        ];
-    }
+{
+    return [
+        IdField::new('id')->onlyOnIndex(),
+        TextField::new('category'),
+        ArrayField::new('coordinates'),
+        Field::new('iconFile', 'Icone')->setFormType(VichImageType::class)->onlyOnForms(),
+        ImageField::new('icon')->setBasePath('/images/location')->onlyOnIndex(), // Change 'iconFile' to 'icon'
+        TextField::new('name'),
+        TextEditorField::new('popupContent'),
+        Field::new('imageFile', 'Image')->setFormType(VichImageType::class)->onlyOnForms(),
+        ImageField::new('image')->setBasePath('/images/location')->onlyOnIndex(), // Change 'imageFile' to 'image'
+    ];
+}
 }

@@ -60,6 +60,6 @@ class DashboardController extends AbstractDashboardController
     yield MenuItem::linkToCrud('Les pass et les concerts', 'fas fa-guitar', ConcertPass::class);
     yield MenuItem::linkToCrud('Les notifications Alertes', 'fas fa-bell', Notification::class);
     yield MenuItem::linkToCrud('Les notifications Infos', 'fas fa-info', NotificationInfo::class);
-    yield MenuItem::linkToCrud('La carte interactive', 'fas fa-info', Location::class);
+    yield MenuItem::linkToCrud('La carte interactive', 'fas fa-map-marked-alt', Location::class);
 }
 }

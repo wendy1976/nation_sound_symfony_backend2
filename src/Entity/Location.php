@@ -26,11 +26,11 @@ class Location
     #[ORM\Column(type: Types::ARRAY)]
     private array $coordinates = [];
 
-    #[Vich\UploadableField(mapping: 'location_files', fileNameProperty: 'iconPath')]
+    #[Vich\UploadableField(mapping: 'location_files', fileNameProperty: 'icon')]
     private ?File $iconFile = null;
 
     #[ORM\Column(nullable: true)]
-    private ?string $iconPath = null;
+    private ?string $icon = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -38,7 +38,7 @@ class Location
     #[ORM\Column(type: Types::TEXT)]
     private ?string $popupContent = null;
 
-    #[Vich\UploadableField(mapping: 'location_files', fileNameProperty: 'imageFile')]
+    #[Vich\UploadableField(mapping: 'location_files', fileNameProperty: 'image')]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
@@ -90,15 +90,16 @@ class Location
         }
     }
 
-    public function getIconPath(): ?string
+    public function getIcon(): ?string
     {
-        return $this->iconPath;
+        return $this->icon;
     }
 
-    public function setIconPath(?string $iconPath): void
+    public function setIcon(?string $icon): void
     {
-        $this->iconPath = $iconPath;
+        $this->icon = $icon;
     }
+
 
     public function getName(): ?string
     {
