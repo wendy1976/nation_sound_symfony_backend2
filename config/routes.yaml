@@ -32,3 +32,8 @@ get_locations:
     path: /api/locations
     controller: App\Controller\LocationController::getLocations
     methods: GET
+
+get_securityInfos:
+    path: /api/securityInfos
+    controller: App\Controller\SecurityInfoController::getSecurityInfo
+    methods: GET
