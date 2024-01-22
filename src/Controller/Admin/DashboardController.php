@@ -63,7 +63,7 @@ class DashboardController extends AbstractDashboardController
     yield MenuItem::linkToCrud('Les notifications Alertes', 'fas fa-bell', Notification::class);
     yield MenuItem::linkToCrud('Les notifications Infos', 'fas fa-info', NotificationInfo::class);
     yield MenuItem::linkToCrud('La carte interactive', 'fas fa-map-marked-alt', Location::class);
-    yield MenuItem::linkToCrud('Les informations de sécurité', 'fas fa-map-marked-alt', SecurityInfo::class);
+    yield MenuItem::linkToCrud('Les informations de sécurité', 'fas fa-shield-alt', SecurityInfo::class);
     yield MenuItem::linkToCrud('Liste des utilisateurs', 'fa-solid fa-user', Utilisateur::class);
 }
 }

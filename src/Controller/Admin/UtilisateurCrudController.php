@@ -20,7 +20,7 @@ class UtilisateurCrudController extends AbstractCrudController
             ->setEntityLabelInSingular('utilisateur')
             //->setDateFormat('d/m/Y', 'fr_FR')
             //->setTimeFormat('...')
-            ->setPageTitle('index','Salon Beautiful - Administration des utilisateurs')
+            ->setPageTitle('index','Nation Sound - Administration des utilisateurs')
             
             // ...
         ;
