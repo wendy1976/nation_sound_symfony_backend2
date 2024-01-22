@@ -13,6 +13,7 @@ use App\Entity\Notification;
 use App\Entity\NotificationInfo;
 use App\Entity\Location;
 use App\Entity\SecurityInfo;
+use App\Entity\Utilisateur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -63,5 +64,6 @@ class DashboardController extends AbstractDashboardController
     yield MenuItem::linkToCrud('Les notifications Infos', 'fas fa-info', NotificationInfo::class);
     yield MenuItem::linkToCrud('La carte interactive', 'fas fa-map-marked-alt', Location::class);
     yield MenuItem::linkToCrud('Les informations de sécurité', 'fas fa-map-marked-alt', SecurityInfo::class);
+    yield MenuItem::linkToCrud('Liste des utilisateurs', 'fa-solid fa-user', Utilisateur::class);
 }
 }
