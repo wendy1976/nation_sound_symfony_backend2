@@ -11,32 +11,38 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\VarDumper\VarDumper;
+use Psr\Log\LoggerInterface;
 
 class SecurityController extends AbstractController
 {
     #[Route('/login', name: 'app_login', methods: ["GET", "POST"])]
-    public function login(Request $request, UserPasswordHasherInterface $hasher, AuthenticationUtils $authenticationUtils, EntityManagerInterface $em)
-    {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+public function login(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em, LoggerInterface $logger): JsonResponse
+{
+    $data = json_decode($request->getContent(), true);
 
-        $data = json_decode($request->getContent(), true);
-
-        $email = $data['email'];
-        $password = $data['password'];
-
-        $user = $em->getRepository(Utilisateur::class)->findOneBy(['email' => $email]);
-
-        if (!$user || !$hasher->isPasswordValid($user, $password)) {
-            return $this->json(['error' => 'Invalid credentials'], 400);
-        }
-
-        // handle successful login...
-
-        return $this->json(['status' => 'ok']);
+    if ($data === null || !isset($data['email']) || !isset($data['password'])) {
+        return $this->json(['error' => 'Invalid request'], 400);
     }
+
+    $email = $data['email'];
+    $password = $data['password'];
+
+    $user = $em->getRepository(Utilisateur::class)->findOneBy(['email' => $email]);
+
+    $logger->info('Checking password...');
+    if (!$user || !$hasher->isPasswordValid($user, $password)) {
+        $logger->info('Invalid credentials');
+        return $this->json(['error' => 'Invalid credentials'], 400);
+    }
+    $logger->info('Password is valid');
+
+    // handle successful login...
+    $session = $request->getSession();
+    $session->start();
+    $session->set('user', $user);
+
+    return $this->json(['status' => 'ok']);
+}
 
     #[Route('/contact', name: 'app_contact', methods: ['GET', 'POST'])]
 public function contact(Request $request, EntityManagerInterface $em): JsonResponse
