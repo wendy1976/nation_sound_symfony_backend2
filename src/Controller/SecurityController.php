@@ -99,4 +99,31 @@ public function contact(Request $request, EntityManagerInterface $em): JsonRespo
 
     return $this->json(['error' => 'Invalid reCAPTCHA'], 400);
 }
+
+
+#[Route('/register', name: 'app_register', methods: ['POST'])]
+public function register(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em, LoggerInterface $logger): JsonResponse
+{
+    $data = json_decode($request->getContent(), true);
+
+    $logger->info('Received data: ' . var_export($data, true));
+
+    if ($data === null || !isset($data['email']) || !isset($data['password'])) {
+        return $this->json(['error' => 'Invalid request'], 400);
+    }
+
+    // Créez une nouvelle instance de User
+    $user = new Utilisateur();
+    $user->setEmail($data['email']);
+    $user->setPassword($hasher->hashPassword($user, $data['password']));
+    $user->setNom($data['nom']); // Assurez-vous que 'nom' est fourni dans $data
+    $user->setPrenom($data['prenom']); // Assurez-vous que 'prenom' est fourni dans $data
+    $user->setEmailConfirmation($data['email']); 
+
+    // Enregistrez l'utilisateur dans la base de données
+    $em->persist($user);
+    $em->flush();
+
+    return $this->json(['status' => 'ok']);
+}
 }
