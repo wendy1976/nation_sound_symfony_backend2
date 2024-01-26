@@ -5,7 +5,7 @@
 {% block body %}
 <style>
     body {
-        background-color: #14213D; /* Bleu foncé */
+        background-color: blue; /* Bleu foncé */
         color: #ffffff; /* Blanc - ajustez selon vos préférences */
         background-size: cover;
         background-repeat: no-repeat;
@@ -49,7 +49,7 @@
     <img src="{{ asset('images/nationSound.png') }}" alt="logo nation sound" style="width: 200px;">
     <ul>
         <!-- Ajoutez d'autres liens vers vos pages ici -->
-        <li class="list-text">{{ "Connectez-vous sur :" | raw }} <a class="list-link" href="{{ path('admin_login') }}">le lien vers l'administration</a></li>
+        <li class="list-text">{{ "Connectez-vous sur :" | raw }} <a class="list-link" href="{{ path('admin') }}">le lien vers l'administration</a></li>
     </ul>
 </div>
 {% endblock %}

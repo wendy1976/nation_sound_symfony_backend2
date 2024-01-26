@@ -1,8 +1,46 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
 {% block content %}
-   <div style="background-color: blue; padding: 20px;">
-      <img src="{{ asset('images/nationSound.png') }}" alt="Icone nation sound" style="float: left; width: 150px; margin-right: 10px;">
-        <h1 style="color: white;">Bienvenue sur le service de gestion de contenu de Nation Sound</h1>
-   </div>
+<style>
+   body {
+      background-color: blue;
+   }
+   .custom-content {
+      background-color: blue;
+      padding: 20px;
+   }
+   img {
+      float: left;
+      width: 150px;
+      margin-right: 10px;
+   }
+   h1 {
+      color: white;
+      font-family: 'Quicksand', sans-serif; /* utilisez la police Quicksand */
+   }
+   p {
+      color: white;
+      font-size: 1.2em; /* ajustez la taille de la police selon vos préférences */
+      font-family: 'Poppins', sans-serif; /* utilisez la police Poppins */
+   }
+</style>
+<div class="custom-content">
+   <img src="{{ asset('images/nationSound.png') }}" alt="Icone nation sound">
+   <h1>Bienvenue sur le service de gestion de contenu de Nation Sound! 🎸</h1>
+   <p>Vous pouvez gérer les différents contenus de votre site internet en cliquant sur les listes à votre gauche : en rajouter, en supprimer, les modifier, pour les contenus suivants:</p>
+   <ul>
+      <li>Les Scènes : Supprimer, Ajouter, ou modifier leur nom</li>
+      <li>Les Musiques : Supprimer, Ajouter, ou modifier leur nom</li>
+      <li>Les Dates et horaires : Supprimer, Ajouter, ou modifier leur date et heure</li>
+      <li>Les Pass : Supprimer, Ajouter, ou modifier leur nom, leur description, leur prix, leur image</li>
+      <li>Les Concerts : Supprimer, Ajouter, ou modifier le nom de l'artiste, l'image, la désignation, la description, la musique, la scène et la date et horaire de concert </li>
+      <li>Les Pass et les Concerts : Supprimer, Ajouter, ou modifier le nom du concert, le nom du pass </li>
+      <li>Les Notifications Push alertes : Supprimer, Ajouter, ou modifier le titre, la description, le lien externe</li>
+      <li>Les Notifications Push infos: Supprimer, Ajouter, ou modifier le titre, la description, le lien interne</li>
+      <li>La Carte Interactive: Supprimer, Ajouter, ou modifier la catégorie, les coordonnées de localisation, l'icone, le nom, la description, l'image</li>
+      <li>Les Informations de sécurité: Supprimer, Ajouter, ou modifier le nom et la description</li>
+      <li>La Liste des Utilisateurs du site: Supprimer, Ajouter, ou modifier le nom, le prénom, le mot de passe et l'email de confirmation</li>
+      <!-- Ajoutez d'autres éléments de liste ici -->
+   </ul>
+</div>
 {% endblock %}
