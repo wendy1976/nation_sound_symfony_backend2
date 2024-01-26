@@ -55,3 +55,11 @@ app_register:
     path: /register
     controller: 'App\Controller\SecurityController::register'
     methods: ["GET", "POST"]
+
+admin_login:
+    path: /admin/login
+    controller: App\Controller\Admin\SecurityController::login
+
+admin_logout:
+    path: /admin/logout
+    controller: App\Controller\Admin\SecurityController::logout
