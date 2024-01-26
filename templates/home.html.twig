@@ -1,9 +1,55 @@
-{# home.html.twig #}
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Accueil Nation Sound!{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue sur la page d'accueil!</h1>
+<style>
+    body {
+        background-color: #14213D; /* Bleu foncé */
+        color: #ffffff; /* Blanc - ajustez selon vos préférences */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        text-align: center;
+        padding: 100px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    h1 {
+        margin-bottom: 50px;
+        color: #ffffff; /* Blanc - ajustez selon vos préférences */
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    /* Style pour le texte dans la liste */
+    .list-text {
+        font-size: 24px; /* Taille du texte */
+        color: #ffffff; /* Blanc - ajustez selon vos préférences */
+    }
+
+    /* Style pour le lien dans la liste */
+    .list-link {
+        color: #FF6F61; /* Rouge pour le lien */
+    }
+</style>
+<div class="content">
+    <h1>Bienvenue sur le service de gestion de contenu de Nation Sound</h1>
+    <img src="{{ asset('images/nationSound.png') }}" alt="logo nation sound" style="width: 200px;">
+    <ul>
+        <!-- Ajoutez d'autres liens vers vos pages ici -->
+        <li class="list-text">{{ "Connectez-vous sur :" | raw }} <a class="list-link" href="{{ path('admin_login') }}">le lien vers l'administration</a></li>
+    </ul>
+</div>
 {% endblock %}
