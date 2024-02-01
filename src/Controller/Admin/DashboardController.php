@@ -66,4 +66,11 @@ class DashboardController extends AbstractDashboardController
     yield MenuItem::linkToCrud('Les informations de sécurité', 'fas fa-shield-alt', SecurityInfo::class);
     yield MenuItem::linkToCrud('Liste des utilisateurs', 'fa-solid fa-user', Utilisateur::class);
 }
+
+
+
+
+
+
+
 }

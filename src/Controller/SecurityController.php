@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
+use App\Entity\Admin;
+use App\Form\AdminLoginFormType;
 use ReCaptcha\ReCaptcha;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManagerInterface;
@@ -126,4 +128,40 @@ public function register(Request $request, UserPasswordHasherInterface $hasher, 
 
     return $this->json(['status' => 'ok']);
 }
+
+#[Route('/admin/login', name: 'admin_login')]
+public function adminLogin(Request $request, AuthenticationUtils $authenticationUtils)
+{
+    // get the login error if there is one
+    $error = $authenticationUtils->getLastAuthenticationError();
+    // last username entered by the user
+    $lastUsername = $authenticationUtils->getLastUsername();
+
+    $form = $this->createForm(AdminLoginFormType::class, [
+        'username' => $lastUsername,
+    ]);
+
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        // Votre logique de gestion de la soumission du formulaire ici
+
+        // Rediriger l'utilisateur vers une autre page
+        return $this->redirectToRoute('home');
+    }
+
+    return $this->render('admin/security/admin_login.html.twig', [
+        'last_username' => $lastUsername,
+        'error' => $error,
+        'form' => $form->createView(),
+    ]);
+}
+
+
+#[Route('/admin/logout', name: 'admin_logout')]
+public function adminLogout()
+    {
+        throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
+    }
+
 }

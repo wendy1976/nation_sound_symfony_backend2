@@ -58,8 +58,8 @@ app_register:
 
 admin_login:
     path: /admin/login
-    controller: App\Controller\Admin\SecurityController::login
+    controller: App\Controller\SecurityController::adminLogin
 
 admin_logout:
     path: /admin/logout
-    controller: App\Controller\Admin\SecurityController::logout
+    controller: App\Controller\SecurityController::adminLogout

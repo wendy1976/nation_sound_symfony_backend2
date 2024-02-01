@@ -13,13 +13,15 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-        # admin:
-        #     pattern: ^/admin
-        #     logout:
-        #         path: admin_logout
-        #         target: admin_login
-        #     custom_authenticators:
-        #         - App\Security\AdminAuthenticator
+        admin:
+            pattern: ^/admin
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
+                default_target_path: /admin # Redirige après la connexion réussie
+            logout:
+                path: admin_logout
+                target: admin_login
     # access_control:
     # - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     # - { path: ^/admin$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

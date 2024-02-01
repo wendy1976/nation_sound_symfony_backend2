@@ -12,7 +12,11 @@ class AdminLoginFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class)
-            ->add('password', PasswordType::class);
+            ->add('username', TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('password', PasswordType::class, [
+                'attr' => ['class' => 'form-control'],
+            ]);
     }
 }
