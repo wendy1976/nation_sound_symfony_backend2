@@ -1,19 +1,51 @@
-{# admin/security/admin_login.html.twig #}
+{# templates/admin/security/login.html.twig #}
 
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-center mb-4">Connexion Admin</h2>
-                <form method="post">
-                    {{ form_row(form.username) }}
-                    {{ form_row(form.password) }}
+{% block title %}Log in!{% endblock %}
 
-                    <button type="submit" class="btn btn-primary btn-block mt-3">Se connecter</button>
-                </form>
-            </div>
+{% block stylesheets %}
+<style>
+    body {
+        background-color: blue !important;
+        color: black;
+        margin-top: 20px;
+    }
+    .form-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        margin-bottom: 10px !important;
+        margin-right: 10px !important;
+        font-size: 16px; /* Ajustez la taille de la police selon vos préférences */
+    }
+
+    .form-control {
+        font-size: 16px; /* Ajustez la taille de la police selon vos préférences */
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <h1 style="color: black">Connexion Administrateur</h1>
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_row(form.username, {'attr': {'class': 'form-control custom-input', 'placeholder': 'Utilisateur'}, 'label_attr': {'class': 'custom-label'}}) }}
         </div>
-    </div>
+        <div class="form-group">
+            {{ form_row(form.password, {'attr': {'class': 'form-control custom-input', 'placeholder': 'Mot de passe'}, 'label_attr': {'class': 'custom-label'}}) }}
+        </div>
+        <button type="submit">Se connecter</button>
+    {{ form_end(form) }}
+</div>
 {% endblock %}
