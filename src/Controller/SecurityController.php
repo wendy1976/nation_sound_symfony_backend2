@@ -5,20 +5,47 @@ use App\Entity\Utilisateur;
 use App\Entity\Admin;
 use App\Form\AdminLoginFormType;
 use ReCaptcha\ReCaptcha;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 use Symfony\Component\VarDumper\VarDumper;
 use Psr\Log\LoggerInterface;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/login', name: 'app_login', methods: ["GET", "POST"])]
-public function login(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em, LoggerInterface $logger): JsonResponse
+
+    #[Route(path: '/login', name: 'app_login')]
+    public function login(AuthenticationUtils $authenticationUtils): Response
+    {
+        // if ($this->getUser()) {
+        //     return $this->redirectToRoute('target_path');
+        // }
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+    }
+
+    #[Route(path: '/logout', name: 'app_logout')]
+    public function logout(): void
+    {
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route('/frontend/login', name: 'app_frontend_login', methods: ["GET","POST"])]
+    public function handleUserLogin(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em, LoggerInterface $logger): JsonResponse
 {
     $data = json_decode($request->getContent(), true);
 
@@ -45,6 +72,7 @@ public function login(Request $request, UserPasswordHasherInterface $hasher, Ent
 
     return $this->json(['status' => 'ok']);
 }
+
 
     #[Route('/contact', name: 'app_contact', methods: ['GET', 'POST'])]
 public function contact(Request $request, EntityManagerInterface $em): JsonResponse
@@ -129,39 +157,5 @@ public function register(Request $request, UserPasswordHasherInterface $hasher, 
     return $this->json(['status' => 'ok']);
 }
 
-#[Route('/admin/login', name: 'admin_login')]
-public function adminLogin(Request $request, AuthenticationUtils $authenticationUtils)
-{
-    // get the login error if there is one
-    $error = $authenticationUtils->getLastAuthenticationError();
-    // last username entered by the user
-    $lastUsername = $authenticationUtils->getLastUsername();
-
-    $form = $this->createForm(AdminLoginFormType::class, [
-        'username' => $lastUsername,
-    ]);
-
-    $form->handleRequest($request);
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        // Votre logique de gestion de la soumission du formulaire ici
-
-        // Rediriger l'utilisateur vers une autre page
-        return $this->redirectToRoute('home');
-    }
-
-    return $this->render('admin/security/admin_login.html.twig', [
-        'last_username' => $lastUsername,
-        'error' => $error,
-        'form' => $form->createView(),
-    ]);
-}
-
-
-#[Route('/admin/logout', name: 'admin_logout')]
-public function adminLogout()
-    {
-        throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
-    }
 
 }

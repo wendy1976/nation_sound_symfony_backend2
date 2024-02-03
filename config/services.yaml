@@ -26,3 +26,5 @@ services:
     App\EventListener\UserPasswordListener:
         tags:
             - { name: 'kernel.event_subscriber' }
+
+    

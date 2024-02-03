@@ -63,3 +63,9 @@ admin_login:
 admin_logout:
     path: /admin/logout
     controller: App\Controller\SecurityController::adminLogout
+
+# Route pour la connexion des utilisateurs du front-end
+app_frontend_login:
+    path: /frontend/login
+    controller: 'App\Controller\SecurityController::handleUserLogin'
+    methods: ["GET", "POST"]
