@@ -12,9 +12,11 @@ class ConcertApiController extends AbstractController
     #[Route('/api/concerts', name: 'api_concerts', methods: ['GET'])]
     public function getConcerts(ConcertRepository $concertRepository): JsonResponse
     {
+        // Récupérer la liste de tous les concerts depuis le repository
         $concerts = $concertRepository->findAll();
         $concertsArray = [];
 
+        // Parcourir chaque concert pour le transformer en un tableau associatif
         foreach ($concerts as $concert) {
             $concertsArray[] = [
                 'id' => $concert->getId(),
@@ -25,11 +27,12 @@ class ConcertApiController extends AbstractController
                 'scene' => $concert->getScene() ? $concert->getScene()->getNomScene() : null,
                 'musique' => $concert->getMusique() ? $concert->getMusique()->getStyleMusique() : null,
                 'image' => $concert->getImage(),
-                'day' => $concert->getDateConcert() ? $concert->getDateConcert()->getDay() : null, // Ajoutez cette ligne
+                'day' => $concert->getDateConcert() ? $concert->getDateConcert()->getDay() : null,
                 // Ajoutez ici d'autres propriétés que vous souhaitez inclure
             ];
         }
 
+        // Créer une réponse JSON et y inclure les concerts au format JSON
         $response = new JsonResponse();
         $response->setContent(json_encode($concertsArray, JSON_UNESCAPED_UNICODE));
 
