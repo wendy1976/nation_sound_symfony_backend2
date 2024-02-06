@@ -28,16 +28,19 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    // Obtient l'ID de l'administrateur
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    // Obtient le nom d'utilisateur de l'administrateur
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
+    // Définit le nom d'utilisateur de l'administrateur
     public function setUsername(string $username): static
     {
         $this->username = $username;
@@ -46,7 +49,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * A visual identifier that represents this user.
+     * Un identifiant visuel qui représente cet utilisateur.
      *
      * @see UserInterface
      */
@@ -58,15 +61,17 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
+    // Obtient les rôles de l'administrateur
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+        // garantit que chaque utilisateur a au moins ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
 
+    // Définit les rôles de l'administrateur
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
@@ -77,11 +82,13 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
+    // Obtient le mot de passe de l'administrateur
     public function getPassword(): string
     {
         return $this->password;
     }
 
+    // Définit le mot de passe de l'administrateur
     public function setPassword(string $password): static
     {
         $this->password = $password;
@@ -92,9 +99,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
+    // Efface les informations sensibles de l'administrateur
     public function eraseCredentials(): void
     {
-        // If you store any temporary, sensitive data on the user, clear it here
+        // Si vous stockez des données temporaires ou sensibles sur l'utilisateur, effacez-les ici
         // $this->plainPassword = null;
     }
 }

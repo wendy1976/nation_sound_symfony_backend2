@@ -14,11 +14,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
-
 #[ORM\Entity(repositoryClass: ConcertRepository::class)]
-#[Broadcast]
-#[Vich\Uploadable]
-
+#[Broadcast] // Permet de diffuser les mises à jour en temps réel
+#[Vich\Uploadable] // Permet de gérer l'upload de fichiers
 
 
 class Concert
@@ -67,8 +65,8 @@ class Concert
 
     public function __toString()
     {
-        // Retournez ici une propriété appropriée de l'objet Concert
-        // Par exemple, si votre objet Concert a une propriété 'nom_artiste', vous pouvez faire :
+        // Retournez ici une propriété appropriée de l'objet Concert en chaîne de caractères
+        
         return $this->nom_artiste;
     }
 
