@@ -83,6 +83,8 @@ Ce tableau de bord, comprend les listes des données suivantes, que l'administra
 
  
 - les mots de passe des utilisateurs et de l'administrateur sont chiffrés: voir le fichier config/packages/security.yaml, hachage des mots de passe:Symfony sélectionnera automatiquement le meilleur hachage disponible (bcrypt ou argon2i)
+- Mise en place de Recapchat pour le formulaire de contact
+- Mise en place de PushNotifications
  
 
 
