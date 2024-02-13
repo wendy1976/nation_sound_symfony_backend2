@@ -13,11 +13,21 @@ use App\Entity\NotificationInfo;
 use App\Entity\Location;
 use App\Entity\SecurityInfo;
 use App\Entity\Utilisateur;
+// Importation de la classe pour configurer le tableau de bord EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+
+// Importation de la classe pour configurer les éléments de menu dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+
+// Importation de la classe de base pour les contrôleurs de tableau de bord EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+
+// Importation de la classe pour représenter les réponses HTTP dans Symfony
 use Symfony\Component\HttpFoundation\Response;
+
+// Importation de l'annotation Route pour définir les routes dans Symfony
 use Symfony\Component\Routing\Annotation\Route;
+
 
 //Création de l'interface du tableau de bord pour le service administration
 class DashboardController extends AbstractDashboardController

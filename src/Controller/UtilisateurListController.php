@@ -7,6 +7,7 @@ use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 //Création de la page pour afficher la liste des utilisateurs
 class UtilisateurListController extends AbstractController
 {

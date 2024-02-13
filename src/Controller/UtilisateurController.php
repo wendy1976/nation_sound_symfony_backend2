@@ -6,18 +6,19 @@ namespace App\Controller;
 
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
-use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Uid\Uuid;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Mailer\MailerInterface; // Pour l'envoi d'e-mails
-use Symfony\Component\Mime\Email as MimeEmail; // Pour la création d'e-mails
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface; // Gestion des exceptions d'envoi d'e-mails
-use Symfony\Component\Validator\Constraints\EqualTo;
-use Symfony\Component\Form\FormError; // Pour les erreurs personnalisées
+use Doctrine\Persistence\ManagerRegistry; // Utilisé pour récupérer vos gestionnaires d'entités
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; // Classe de base pour tous les contrôleurs Symfony
+use Symfony\Component\HttpFoundation\Request; // Utilisé pour manipuler la requête HTTP entrante
+use Symfony\Component\HttpFoundation\Response; // Utilisé pour créer une réponse HTTP
+use Symfony\Component\Routing\Annotation\Route; // Utilisé pour définir les routes avec des annotations
+use Symfony\Component\Uid\Uuid; // Utilisé pour générer des UUID
+use Symfony\Component\Validator\Validator\ValidatorInterface; // Utilisé pour valider les données
+use Symfony\Component\Mailer\MailerInterface; // Utilisé pour l'envoi d'e-mails
+use Symfony\Component\Mime\Email as MimeEmail; // Utilisé pour la création d'e-mails
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface; // Utilisé pour la gestion des exceptions d'envoi d'e-mails
+use Symfony\Component\Validator\Constraints\EqualTo; // Utilisé pour la validation de l'égalité des valeurs
+use Symfony\Component\Form\FormError; // Utilisé pour les erreurs personnalisées dans les formulaires
+
 
 class UtilisateurController extends AbstractController
 {

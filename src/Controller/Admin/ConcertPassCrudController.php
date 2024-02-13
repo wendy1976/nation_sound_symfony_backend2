@@ -3,8 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ConcertPass;
+// Importation de la classe de base pour les contrôleurs CRUD EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+
+// Importation de la classe pour représenter les champs d'association dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+
+// Importation de la classe pour représenter les champs d'ID dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud; // Importation de la classe Crud pour la configuration du CRUD
 

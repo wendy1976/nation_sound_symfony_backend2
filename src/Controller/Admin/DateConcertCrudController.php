@@ -3,15 +3,32 @@
 namespace App\Controller\Admin;
 
 use App\Entity\DateConcert;
+// Importation de la classe de base pour les contrôleurs CRUD EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+
+// Importation de la classe pour représenter les champs d'ID dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+
+// Importation de la classe pour représenter les champs de date et heure dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+
+// Importation de la classe pour représenter une entité dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+
+// Importation de la classe pour représenter une recherche dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
+
+// Importation de la classe pour représenter une collection de champs dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
+
+// Importation de la classe pour représenter une collection de filtres dans EasyAdmin
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
+
+// Importation de la classe pour construire des requêtes SQL avec Doctrine ORM
 use Doctrine\ORM\QueryBuilder;
+
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud; // Importation de la classe Crud pour la configuration du CRUD
+
 
 class DateConcertCrudController extends AbstractCrudController
 {

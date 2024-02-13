@@ -3,15 +3,16 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Pass;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
-use Vich\UploaderBundle\Form\Type\VichImageType;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController; // Classe de base pour tous les contrôleurs CRUD
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField; // Utilisé pour représenter un champ d'ID
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField; // Utilisé pour représenter un champ de texte avec éditeur
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField; // Utilisé pour représenter un champ de texte simple
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField; // Utilisé pour représenter un champ numérique
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField; // Utilisé pour représenter un champ d'image
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field; // Classe de base pour tous les champs
+use Vich\UploaderBundle\Form\Type\VichImageType; // Utilisé pour le téléchargement et la gestion d'images
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud; // Utilisé pour configurer les options CRUD
+
 
 class PassCrudController extends AbstractCrudController
 {

@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Repository\ConcertRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; // Classe de base pour tous les contrôleurs Symfony
+use Symfony\Component\HttpFoundation\JsonResponse; // Utilisé pour créer une réponse JSON
+use Symfony\Component\Routing\Annotation\Route; // Utilisé pour définir les routes avec des annotations
+
 
 class ConcertApiController extends AbstractController
 {

@@ -2,11 +2,12 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Notification;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use App\Entity\Notification; // Utilisé pour interagir avec l'entité Notification de votre application
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController; // Classe de base pour tous les contrôleurs CRUD
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField; // Utilisé pour représenter un champ de texte simple
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField; // Utilisé pour représenter un champ d'ID
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud; // Utilisé pour configurer les options CRUD
+
 
 class NotificationCrudController extends AbstractCrudController {
     // Méthode pour obtenir le nom complet de l'entité gérée par ce contrôleur

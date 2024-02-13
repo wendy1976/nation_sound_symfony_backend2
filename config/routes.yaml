@@ -8,31 +8,37 @@ home:
     path: /
     controller: App\Controller\HomeController::index
 
+# Route pour récupérer les données des concerts
 api_concerts:
     path: /api/concerts
     controller: App\Controller\ConcertApiController::getConcerts
     methods: GET
 
+# Route pour récupérer les données des pass
 api_passes:
     path: /api/passes
     controller: App\Controller\PassApiController::getPasses
     methods: GET
 
+# Route pour récupérer les données des notifications d'alerte
 get_notifications:
     path: /api/notifications
     controller: App\Controller\NotificationController::getNotifications
     methods: GET
 
+# Route pour récupérer les données des notifications d'information
 get_notificationInfos:
     path: /api/notificationInfos
     controller: App\Controller\NotificationInfoController::getNotificationInfos
     methods: GET
 
+# Route pour récupérer les données des lieux de ma carte interactive
 get_locations:
     path: /api/locations
     controller: App\Controller\LocationController::getLocations
     methods: GET
 
+# Route pour récupérer les données des informations de sécurité
 get_securityInfos:
     path: /api/securityInfos
     controller: App\Controller\SecurityInfoController::getSecurityInfo
@@ -56,10 +62,12 @@ app_register:
     controller: 'App\Controller\SecurityController::register'
     methods: ["GET", "POST"]
 
+# Route pour le formulaire de connexion de l'administrateur du back-end
 admin_login:
     path: /admin/login
     controller: App\Controller\SecurityController::adminLogin
 
+# Route pour la déconnexion de l'administrateur du back-end
 admin_logout:
     path: /admin/logout
     controller: App\Controller\SecurityController::adminLogout

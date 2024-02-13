@@ -4,18 +4,19 @@ namespace App\Controller;
 use App\Entity\Utilisateur;
 use App\Entity\Admin;
 use App\Form\AdminLoginFormType;
-use ReCaptcha\ReCaptcha;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use ReCaptcha\ReCaptcha; // Utilisé pour la validation du captcha
+use Symfony\Component\HttpFoundation\Response; // Utilisé pour créer une réponse HTTP
+use Symfony\Component\HttpFoundation\JsonResponse; // Utilisé pour créer une réponse JSON
+use Doctrine\ORM\EntityManagerInterface; // Utilisé pour interagir avec la base de données via Doctrine
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; // Classe de base pour tous les contrôleurs Symfony
+use Symfony\Component\HttpFoundation\Request; // Utilisé pour manipuler la requête HTTP entrante
+use Symfony\Component\Routing\Annotation\Route; // Utilisé pour définir les routes avec des annotations
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken; // Utilisé pour représenter un jeton d'authentification basé sur le nom d'utilisateur et le mot de passe
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface; // Utilisé pour stocker et récupérer les jetons d'authentification
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils; // Utilisé pour récupérer les erreurs d'authentification et le dernier nom d'utilisateur entré
+use Symfony\Component\HttpFoundation\Session\SessionInterface; // Utilisé pour manipuler la session HTTP
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface; // Utilisé pour hacher les mots de passe utilisateur
+
 
 use Symfony\Component\VarDumper\VarDumper;
 use Psr\Log\LoggerInterface;
