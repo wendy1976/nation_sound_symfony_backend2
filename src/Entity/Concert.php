@@ -32,7 +32,7 @@ class Concert
     #[ORM\Column(type: Types::TEXT)] // Mappe cette propriété à une colonne de base de données de type texte
     private ?string $description = null;
 
-    #[ORM\OneToOne(inversedBy: 'concert', cascade: ['persist', 'remove'])] // Définit une relation un-à-un avec l'entité DateConcert
+    #[ORM\ManyToOne(targetEntity: DateConcert::class, inversedBy: 'concerts', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)] // Cette colonne ne peut pas être nulle
     private ?DateConcert $date_concert = null;
 

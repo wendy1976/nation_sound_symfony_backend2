@@ -20,8 +20,7 @@ class DateConcert
     #[ORM\Column(type: Types::DATETIME_MUTABLE)] // Mappe cette propriété à une colonne de base de données de type datetime
     private ?\DateTimeInterface $date_heure = null;
 
-    #[ORM\OneToOne(mappedBy: 'date_concert', cascade: ['persist', 'remove'])] // Définit une relation un-à-un avec l'entité Concert
-    private ?Concert $concert = null;
+    #[ORM\OneToMany(mappedBy: 'date_concert', targetEntity: Concert::class)] // Définit une relation un-à-plusieurs avec l'entité Concert
 
     public function getId(): ?int
     {
